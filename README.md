@@ -31,5 +31,5 @@ Static Analysis: Verificarea integrității codului prin flag-uri riguroase de c
 
 Deployment Awareness: Pregătirea automată a artefactelor pentru release.
 
-#Resurse Proiect
+# Resurse Proiect
 Management Proiect: [Trello](https://trello.com/b/Ucx4Iop8/my-trello-board)

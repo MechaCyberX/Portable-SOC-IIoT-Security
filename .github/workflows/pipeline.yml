@@ -1,0 +1,28 @@
+name: SOC_Infrastructure_Pipeline
+
+on: [push] # Ruleaza la fiecare push
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # 1. AUTOMATIC BUILD 
+      - name: Build IDPS Engine
+        run: g++ tests/unit_test.cpp -o guardian_engine
+
+      # 2. AUTOMATIC UNIT TESTING 
+      - name: Execute Titan Logic Test
+        run: ./guardian_engine
+
+      # 3. STATIC CODE ANALYSIS 
+      - name: Lint Check
+        run: g++ -Wall -Wextra tests/unit_test.cpp -o analysis_output
+
+      # 4. DEPLOYMENT STEP (Simulare Folder Release) 
+      - name: Prepare Deployment Artifacts
+        run: |
+          mkdir -p release_builds
+          cp guardian_engine release_builds/
+          echo "Gata de livrare pe nodurile ESP32!"
